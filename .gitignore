@@ -6,6 +6,8 @@ node_modules/
 # Build and Extension packaging outputs
 dist/
 build/
+.output/
+.wxt/
 *.zip
 *.crx
 *.pem
