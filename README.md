@@ -6,11 +6,17 @@ A browser-native AI assistant built for Google Chrome (Manifest V3), featuring B
 
 ## Tech Stack
 
-* **Runtime & Package Manager**: [Bun](https://bun.sh/)
-* **Extension Framework**: [WXT](https://wxt.dev) (Vite-powered MV3 framework with HMR)
-* **UI**: React 19 + Tailwind CSS v4
-* **State Management**: Zustand
-* **Language**: TypeScript (strict mode, `@/*` path aliases)
+* **Runtime & Package Manager**: [Bun](https://bun.sh/) (`>= 1.2`)
+* **Extension Framework**: [WXT](https://wxt.dev) (Vite-powered Manifest V3 framework with HMR)
+* **UI & Styling**: [React 19](https://react.dev/) + [Tailwind CSS v4](https://tailwindcss.com/)
+* **State Management**: [Zustand](https://zustand.docs.pmnd.rs/) (v5)
+* **Language**: [TypeScript](https://www.typescriptlang.org/) (strict mode, `@/*` path aliases)
+* **AI Integration**: [Vercel AI SDK](https://sdk.vercel.ai/) (`@ai-sdk/openai`, `@ai-sdk/anthropic`, `@ai-sdk/google`) with Web Streams & fallback SSE parser
+* **Cryptography & Vault Security**: Native [Web Cryptography API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API) (`SubtleCrypto` – PBKDF2-HMAC-SHA-256 with 600k iterations, AES-GCM 256-bit)
+* **Artifact Export Utilities (Lazy-Loaded)**:
+  * Slide Decks: [PptxGenJS](https://gitbrent.github.io/PptxGenJS/)
+  * Spreadsheets: [SheetJS](https://sheetjs.com/) (XLSX, CSV)
+  * Documents: [jsPDF](https://github.com/parallax/jsPDF)
 
 ---
 
