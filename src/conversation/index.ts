@@ -4,4 +4,11 @@
  * See CONTEXT.md & ADR-006, ADR-016.
  */
 
-export {};
+export {
+  appendMessage,
+  getConversationMessages,
+  getRecentConversationMessages,
+  MAX_CONTEXT_MESSAGES,
+} from './storage/conversationStorage';
+export { useConversationStore } from './stores/conversationStore';
+export type { Conversation, Message, MessageRole } from './types';
