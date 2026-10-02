@@ -27,9 +27,9 @@ export function VaultUnlockScreen() {
   };
 
   return (
-    <main className="grid h-screen min-h-[360px] place-items-center overflow-y-auto bg-slate-50 p-5 text-slate-900">
+    <main className="screen-enter grid h-screen min-h-[360px] place-items-center overflow-y-auto bg-slate-50 p-5 text-slate-900">
       <form
-        className="w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+        className="wizard-card w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
         onSubmit={handleSubmit}
       >
         <div className="grid size-11 place-items-center rounded-2xl bg-amber-100 text-xl text-amber-800">

@@ -26,7 +26,7 @@ export function ChatHeader() {
     <header className="flex shrink-0 items-center gap-2 border-b border-slate-200 bg-white px-3 py-3">
       <button
         aria-label={t("Open conversation history")}
-        className="grid size-9 shrink-0 place-items-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        className="header-icon-button grid size-9 shrink-0 place-items-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
         onClick={openConversationDrawer}
         type="button"
       >
@@ -46,7 +46,7 @@ export function ChatHeader() {
 
       <button
         aria-label={t("Open settings")}
-        className="ml-auto grid size-9 shrink-0 place-items-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+        className="header-icon-button settings-trigger ml-auto grid size-9 shrink-0 place-items-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
         onClick={toggleSettings}
         type="button"
       >

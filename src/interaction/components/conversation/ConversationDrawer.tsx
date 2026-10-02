@@ -82,10 +82,10 @@ export function ConversationDrawer() {
 
   return (
     <>
-      <div className="absolute inset-0 z-20 bg-slate-950/25" role="presentation">
+      <div className="overlay-enter absolute inset-0 z-20 bg-slate-950/25" role="presentation">
         <button
           aria-label={t('Close conversation history')}
-          className="absolute inset-0 cursor-default"
+          className="overlay-dismiss absolute inset-0 cursor-default"
           onClick={closeDrawer}
           type="button"
         />

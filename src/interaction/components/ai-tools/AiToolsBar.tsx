@@ -34,7 +34,8 @@ export function AiToolsBar() {
   };
 
   const toolButton = (label: string, icon: string, task: AiActivity, prompt: string) => (
-    <button className="tool-button" disabled={isBusy || !online}
+    <button className="tool-button" disabled={isBusy || !online} data-active={isChatLoading && activity === task}
+      aria-busy={(isChatLoading && activity === task) || undefined}
       onClick={() => void runTool(prompt, task)} type="button" data-action={task}>
       <span className="tool-icon" aria-hidden="true">{icon}</span>
       <span>{t(isChatLoading && activity === task ? ACTIVITY_PROGRESS[task] : label)}</span>
@@ -49,7 +50,7 @@ export function AiToolsBar() {
         </h2>
         <span className="truncate text-[10px] text-slate-500">{t(content ? content.source === 'selection' ? 'Using selected text' : 'Using current page' : 'Reads current page when used')}</span>
       </div>
-      <div className="grid grid-cols-2 gap-2">
+      <div className="action-grid grid grid-cols-2 gap-2">
         {toolButton('Summarize', '≡', 'summarize', buildSummarizePrompt())}
         {toolButton('Explain', '✧', 'explain', buildExplainPrompt())}
         <div className="tool-group">

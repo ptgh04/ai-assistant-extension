@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import { mkdir } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import { PROVIDERS } from '../src/ai-backend/ai/types';
+import { verifyMotion } from './browser-motion';
 
 const root = process.cwd();
 const chromePath = process.env.CHROME_PATH || resolve(root, 'node_modules/.chrome-for-testing/chrome-win64/chrome.exe');
@@ -302,6 +303,7 @@ try {
   await delay(350);
   const lightImage = await call('Page.captureScreenshot', { format: 'png' });
   await Bun.write(resolve(root, 'temp/ui-chat-light.png'), Buffer.from(lightImage.data, 'base64'));
+  await verifyMotion({ call, evaluate, waitFor, click, fill });
   await call('Emulation.setDeviceMetricsOverride', { width: 320, height: 500, deviceScaleFactor: 1, mobile: false });
   assert.equal(await evaluate(`document.documentElement.scrollWidth <= innerWidth`), true);
   assert.equal(await evaluate(`document.querySelector('#chat-input').getBoundingClientRect().bottom <= innerHeight`), true);

@@ -75,3 +75,39 @@ dropdowns, independent language choices, native request instructions for all
 three providers, translation-target precedence, reload persistence, and reset
 retention. All provider responses were mocked; real AI language compliance still
 requires the live-key checks in the manual suite.
+
+## Follow-up: motion polish
+
+The interface now shares short easing/duration tokens, with no added animation
+dependency. Action cards and the welcome screen enter in a short stagger; header
+icons, tool icons, and the Send arrow react to hover/press. Settings/history
+drawers use directional entrances with a fading backdrop, and rename/delete
+dialogs use a small scale-and-rise entrance. Setup steps and progress indicators
+also animate without delaying input or changing the setup flow.
+
+New message bubbles enter from their respective side. A decorative cursor appears
+only on the currently streaming assistant message; React message keys stay stable
+across SSE chunks, so text updates do not restart the entrance. The working card
+uses an orbit, dots, and a moving highlight; the selected action is emphasized.
+Successful completion removes the cursor and reveals a small check indicator.
+Welcome rings stop after two cycles; continuous motion is reserved for work in
+progress. No conversation, provider, storage, or vault behavior was changed.
+
+`prefers-reduced-motion: reduce` disables animations, transitions, hover movement,
+and smooth scrolling, including pseudo-elements. Status text and focus outlines
+remain available. Entrance effects use backwards fill only, leaving no permanent
+transform/opacity stacking context after they finish.
+
+Verification: **91 Bun tests / 534 assertions passed**, strict TypeScript and the
+production MV3 build passed. Chrome for Testing additionally checked drawer/modal
+animation styles, a controlled two-chunk SSE response, stable message identity and
+no entrance restart, cursor removal, and toggling reduced motion during streaming.
+The existing full browser smoke suite passed, including light/dark/system themes,
+offline recovery, and 320/360px layouts. Screenshots were visually inspected.
+Provider responses were mocked; these checks do not claim live API validation.
+
+To preview locally, rebuild with `bun run build`, reload AI Helper at
+`chrome://extensions`, then close and reopen its Side Panel. Check the four action
+cards, send a question, open Settings/history and a rename/delete dialog. With the
+OS reduced-motion preference enabled, these elements should stay static while
+all controls and status messages remain usable.

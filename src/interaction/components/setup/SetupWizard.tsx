@@ -59,7 +59,7 @@ export function SetupWizard() {
   };
 
   return (
-    <main className="flex h-screen min-h-[420px] flex-col overflow-y-auto bg-slate-50 px-5 py-6 text-slate-900">
+    <main className="screen-enter flex h-screen min-h-[420px] flex-col overflow-y-auto bg-slate-50 px-5 py-6 text-slate-900">
       <div className="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center">
         <div className="mb-6">
           <div className="grid size-12 place-items-center rounded-2xl bg-blue-600 text-sm font-bold text-white shadow-lg shadow-blue-200">
@@ -70,7 +70,7 @@ export function SetupWizard() {
         </div>
 
         <PreferencesControls />
-        <ol aria-label={t("Setup progress")} className="mb-6 grid grid-cols-4 gap-2">
+        <ol aria-label={t("Setup progress")} className="setup-progress mb-6 grid grid-cols-4 gap-2">
           {Array.from({ length: TOTAL_STEPS }, (_, index) => index + 1).map(
             (item) => (
               <li
@@ -88,14 +88,14 @@ export function SetupWizard() {
           )}
         </ol>
 
-        <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <section className="wizard-card rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
           {progressError ? <p role="alert" className="text-xs text-red-700">{t(progressError)}</p> : null}
           <p className="text-[11px] font-semibold uppercase tracking-wide text-blue-600">
             {t('Step count', { step, total: TOTAL_STEPS })}
           </p>
 
           {step === 1 ? (
-            <div className="mt-3">
+            <div className="wizard-step mt-3">
               <h2 className="text-base font-semibold">{t("Create your local vault")}</h2>
               <p className="mt-1 text-xs leading-5 text-slate-500">{t("Choose a passphrase with at least 12 characters. It is never stored and cannot be recovered.")}</p>
               <label className="mt-4 block text-xs font-medium text-slate-700">{t("Vault passphrase")}<input
@@ -126,7 +126,7 @@ export function SetupWizard() {
           ) : null}
 
           {step === 2 ? (
-            <div className="mt-3">
+            <div className="wizard-step mt-3">
               <h2 className="text-base font-semibold">{t("Choose provider")}</h2>
               <p className="mt-1 text-xs leading-5 text-slate-500">{t("Choose the provider you want to use. You can add other keys in Settings later.")}</p>
               <label className="mt-4 block text-xs font-medium text-slate-700">{t("Provider")}<select
@@ -151,7 +151,7 @@ export function SetupWizard() {
           ) : null}
 
           {step === 3 ? (
-            <div className="mt-3">
+            <div className="wizard-step mt-3">
               <h2 className="text-base font-semibold">{t("Enter your API key")}</h2>
               <p className="mt-1 text-xs leading-5 text-slate-500">{t("The key is validated before it is encrypted and saved.")}</p>
               <label className="mt-4 block text-xs font-medium text-slate-700">
@@ -182,7 +182,7 @@ export function SetupWizard() {
           ) : null}
 
           {step === 4 ? (
-            <form className="mt-3" onSubmit={finishSetup}>
+            <form className="wizard-step mt-3" onSubmit={finishSetup}>
               <h2 className="text-base font-semibold">{t("Validate and finish")}</h2>
               <p className="mt-1 text-xs leading-5 text-slate-500">{t("AI Helper will test the connection, then encrypt the key with PBKDF2 and AES-GCM.")}</p>
               <dl className="mt-4 space-y-2 rounded-xl bg-slate-50 p-3 text-xs">

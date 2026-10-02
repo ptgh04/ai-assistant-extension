@@ -108,10 +108,10 @@ export function SettingsPanel() {
   };
 
   return (
-    <div className="absolute inset-0 z-10 flex justify-end bg-slate-950/25" role="presentation">
+    <div className="overlay-enter absolute inset-0 z-10 flex justify-end bg-slate-950/25" role="presentation">
       <button
         aria-label={t("Close settings")}
-        className="absolute inset-0 cursor-default"
+        className="overlay-dismiss absolute inset-0 cursor-default"
         onClick={handleClose}
         type="button"
       />

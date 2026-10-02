@@ -25,11 +25,11 @@ export function RenameDialog({
   };
 
   return (
-    <div className="absolute inset-0 z-30 grid place-items-center bg-slate-950/35 p-4">
+    <div className="overlay-enter absolute inset-0 z-30 grid place-items-center bg-slate-950/35 p-4">
       <form
         aria-labelledby="rename-title"
         aria-modal="true"
-        className="w-full max-w-xs rounded-2xl bg-white p-4 shadow-xl"
+        className="dialog-enter w-full max-w-xs rounded-2xl bg-white p-4 shadow-xl"
         onSubmit={handleSubmit}
         role="dialog"
       >

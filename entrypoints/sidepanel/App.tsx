@@ -53,7 +53,7 @@ export default function App() {
     screen = <VaultUnlockScreen />;
   } else {
     screen = (
-      <div className="app-shell relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden text-slate-900">
+      <div className="app-shell screen-enter relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden text-slate-900">
         <ChatHeader />
         <div className="context-workspace max-h-[46%] shrink-0 overflow-y-auto">
           <PageContextBar />

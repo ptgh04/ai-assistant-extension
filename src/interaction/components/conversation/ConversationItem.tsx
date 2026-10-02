@@ -26,7 +26,7 @@ export function ConversationItem({
 
   return (
     <article
-      className={`rounded-xl border p-2 ${
+      className={`history-item rounded-xl border p-2 ${
         isActive ? 'border-blue-200 bg-blue-50' : 'border-slate-200 bg-white'
       }`}
     >

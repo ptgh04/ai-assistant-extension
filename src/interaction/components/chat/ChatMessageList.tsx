@@ -27,7 +27,8 @@ export function ChatMessageList() {
       {isHydrating ? <p role="status" className="mb-3 text-xs text-slate-500">{t('Loading history…')}</p> : null}
       {messages.length === 0 && !isLoading && !error ? <EmptyState /> : (
         <div className="space-y-4">
-          {messages.map((message) => <MessageBubble key={message.id} message={message} />)}
+          {messages.map((message, index) => <MessageBubble key={message.id} message={message}
+            isStreaming={isLoading && status === 'streaming' && index === messages.length - 1} />)}
           {isLoading ? (
             <div className="activity-card" role="status" aria-live="polite" data-testid="ai-activity">
               <span className="activity-orbit" aria-hidden="true">✦</span>
@@ -37,7 +38,7 @@ export function ChatMessageList() {
               </div>
               <span className="activity-dots ml-auto" aria-hidden="true"><i /><i /><i /></span>
             </div>
-          ) : status === 'success' ? <p role="status" className="flex items-center gap-1.5 text-[11px] text-emerald-700"><span aria-hidden="true">✓</span>{t(ACTIVITY_LABELS[activity])} · {t('Response saved.')}</p> : null}
+          ) : status === 'success' ? <p role="status" className="success-notice flex items-center gap-1.5 text-[11px] text-emerald-700"><span className="success-check" aria-hidden="true">✓</span>{t(ACTIVITY_LABELS[activity])} · {t('Response saved.')}</p> : null}
           {error ? <ErrorBanner message={error} onDismiss={clearError} /> : null}
         </div>
       )}

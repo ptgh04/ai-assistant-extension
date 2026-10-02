@@ -3,15 +3,18 @@ import type { ChatMessage } from '../../types/chat';
 
 interface MessageBubbleProps {
   message: ChatMessage;
+  isStreaming?: boolean;
 }
 
-export function MessageBubble({ message }: MessageBubbleProps) {
+export function MessageBubble({ message, isStreaming = false }: MessageBubbleProps) {
   const { t } = useI18n();
   const isUser = message.role === 'user';
 
   return (
     <article
       aria-label={isUser ? t('You') : 'AI Helper'}
+      aria-busy={(!isUser && isStreaming) || undefined}
+      data-role={message.role}
       className={`message-enter flex ${isUser ? 'justify-end' : 'justify-start'}`}
     >
       <div
@@ -22,7 +25,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         }`}
       >
         <p className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider opacity-65">{isUser ? t('You') : 'AI Helper'}</p>
-        <p className="whitespace-pre-wrap break-words">{message.content}</p>
+        <p className="whitespace-pre-wrap break-words">{message.content}{!isUser && isStreaming ? <span className="streaming-cursor" aria-hidden="true" /> : null}</p>
       </div>
     </article>
   );
