@@ -4,4 +4,6 @@
  * See CONTEXT.md & ADR-017.
  */
 
-export {};
+export { useSettingsStore } from './stores/settingsStore';
+export { getCachedApiKey } from './security';
+export type { VaultStatus } from './security';

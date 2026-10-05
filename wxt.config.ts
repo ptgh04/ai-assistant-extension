@@ -3,13 +3,17 @@ import tailwindcss from '@tailwindcss/vite';
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
+  manifestVersion: 3,
   modules: ['@wxt-dev/module-react'],
+  srcDir: 'src',
+  entrypointsDir: '../entrypoints',
   vite: () => ({
     plugins: [tailwindcss()],
   }),
   manifest: {
-    name: 'Chrome AI Assistant',
-    description: 'AI-powered browser assistant with BYOK backend and human-in-the-loop safety',
+    minimum_chrome_version: '116',
+    name: 'AI Helper',
+    description: 'A local-first AI assistant that lives in the Chrome Side Panel.',
     permissions: [
       'storage',
       'activeTab',
@@ -23,7 +27,7 @@ export default defineConfig({
       'https://generativelanguage.googleapis.com/*',
     ],
     action: {
-      default_title: 'Open AI Assistant Side Panel',
+      default_title: 'Open AI Helper',
     },
   },
 });
